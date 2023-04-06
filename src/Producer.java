@@ -9,18 +9,19 @@
        @param aQueue the queue into which to insert greetings
        @param count the number of greetings to produce
     */
-    public Producer(String aGreeting, BoundedQueue<String> aQueue, int count)
+    public Producer(String aGreeting, BoundedQueue<String> aQueue, int count, int startingIndex)
     {
        greeting = aGreeting;
        queue = aQueue;
        greetingCount = count;
+       this.startingIndex = startingIndex;
    }
  
     public void run()
     {
        try
        {
-          int i = 1;
+          int i = startingIndex;
           while (i <= greetingCount)
           {
              queue.add(i + ": " + greeting);
@@ -37,6 +38,7 @@
     private String greeting;
     private BoundedQueue<String> queue;
     private int greetingCount;
+    private int startingIndex;
  
     private static final int DELAY = 10;
  }
