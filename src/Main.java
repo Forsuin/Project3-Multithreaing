@@ -38,16 +38,13 @@ public class Main {
             }
         });
 
-        Thread c1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    try {
-                        System.out.printf("Consumer 1 popped %d from the stack\n", stack.pop());
-                        stack.print();
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
-                    }
+        Thread c1 = new Thread(() -> {
+            while (true) {
+                try {
+                    System.out.printf("Consumer 1 popped %d from the stack\n", stack.pop());
+                    stack.print();
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
                 }
             }
         });
