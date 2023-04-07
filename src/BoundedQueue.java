@@ -28,12 +28,12 @@
        {         
           while (size == 0) 
              valueAvailableCondition.await();
-          E r = (E) elements[head]; 
+          E r = (E) elements[head];
           head++;
           size--;
           if (head == elements.length) 
              head = 0; 
-          spaceAvailableCondition.signalAll();
+          spaceAvailableCondition.signal();
           return r; 
        }
        finally
@@ -58,7 +58,7 @@
           size++;
           if (tail == elements.length) 
              tail = 0; 
-          valueAvailableCondition.signalAll();
+          valueAvailableCondition.signal();
        }
        finally
        {

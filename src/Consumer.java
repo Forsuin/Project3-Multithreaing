@@ -29,7 +29,7 @@
        }
        catch (InterruptedException exception)
        {
-    	   //System.out.println("Consumer interrupted, going to terminate.");
+    	   System.out.println("Consumer interrupted, going to terminate.");
        }
     }
  
